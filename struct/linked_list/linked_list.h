@@ -12,7 +12,7 @@ typedef struct noh_linked_list {
 class LinkedList {
   private:
     int size;
-    noh_linked_list* first;
+    noh_linked_list* head;
 
     noh_linked_list* find_by_index(int index);
 
@@ -28,12 +28,12 @@ class LinkedList {
 };
 
 LinkedList::LinkedList() {
-  this->first = NULL;
+  this->head = NULL;
   this->size = 0;
 }
 
 noh_linked_list* LinkedList::find_by_index(int index) {
-  noh_linked_list* noh = this->first;
+  noh_linked_list* noh = this->head;
 
   for (int i = 1; i <= index; i++) {
     noh = noh->next;
@@ -51,8 +51,8 @@ void LinkedList::push(void* value, int index) {
   noh->value = value;
 
   if (index == 0) {
-    noh->next = this->first;
-    this->first = noh;
+    noh->next = this->head;
+    this->head = noh;
   } else {
     noh_linked_list* noh_found = this->find_by_index(index - 1);
     noh->next = noh_found->next;
@@ -75,7 +75,7 @@ void* LinkedList::pop(int index) {
   void* value = noh_found->value;
 
   if (index == 0) {
-    this->first = noh_found->next;
+    this->head = noh_found->next;
   }
 
   free(noh_found);
@@ -90,7 +90,7 @@ void* LinkedList::pop() {
 }
 
 bool LinkedList::is_empty() {
-  return this->first == NULL ? true : false;
+  return this->head == NULL ? true : false;
 }
 
 int LinkedList::length() {

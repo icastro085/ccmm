@@ -15,3 +15,12 @@ OR
 ```bash
 gcc main.cpp -o main.out && ./main.out
 ```
+
+OR
+
+```bash
+g++ main.cpp -o main.out && ./main.out
+```
+
+
+http://www.lrc.ic.unicamp.br/~luciano/courses/mc202-2s2009/tutorial_gdb.txt
